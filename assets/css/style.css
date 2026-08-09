@@ -257,9 +257,10 @@ section + section { border-top: 1px solid var(--line); }
 .contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); }
 @media (max-width: 760px) { .contact__grid { grid-template-columns: 1fr; } }
 .find-me { list-style: none; margin: 0; padding: 0; }
-.find-me li { padding: 0.4rem 0; border-top: 1px solid var(--line-soft); font-size: 0.92rem; }
+.find-me li { display: flex; align-items: center; gap: 0.6rem; padding: 0.4rem 0; border-top: 1px solid var(--line-soft); font-size: 0.92rem; }
 .find-me li:first-child { border-top: 0; }
 .find-me__id { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-faint); }
+.brand-icon { width: 1rem; height: 1rem; flex-shrink: 0; color: var(--ink-soft); }
 .contact a { font-weight: 500; }
 .contact dl { display: grid; grid-template-columns: auto 1fr; gap: 0.55rem 1.1rem; margin: 0; max-width: 36rem; }
 .contact dt { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); padding-top: 0.15rem; }
