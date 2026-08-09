@@ -1,0 +1,48 @@
+name: Update publications from Google Scholar
+
+# Runs weekly and on demand. Opens a pull request with any changes so you can
+# review new entries (flagged source="auto") before they go live.
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"   # every Monday, 08:00 UTC
+  workflow_dispatch: {}    # manual "Run workflow" button
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Refresh publications
+        id: refresh
+        continue-on-error: true   # a Scholar block should not fail the run
+        run: python scripts/update_publications.py --user 6WnxDuUAAAAJ
+
+      - name: Open pull request if anything changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: refresh publications from Google Scholar"
+          title: "Update publications from Google Scholar"
+          body: |
+            Automated refresh of `data/publications.json`.
+
+            **Review before merging:** any new entries are added with
+            `"source": "auto"` and a *guessed* section. Correct the `section`
+            if needed and change `"source"` to `"manual"` to lock it in.
+          branch: auto/update-publications
+          delete-branch: true
+          add-paths: data/publications.json
