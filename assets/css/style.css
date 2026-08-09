@@ -111,7 +111,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; l
     border-bottom: 1px solid var(--line);
     max-height: 0; overflow: hidden; transition: max-height 0.28s ease;
   }
-  .nav__links.open { max-height: 380px; }
+  .nav__links.open { max-height: 440px; }
   .nav__links a { display: block; padding: 0.85rem var(--gap); border-top: 1px solid var(--line-soft); }
 }
 
@@ -172,6 +172,11 @@ section + section { border-top: 1px solid var(--line); }
 .side-card li span:last-child { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-faint); white-space: nowrap; }
 
 @media (max-width: 760px) { .about__grid { grid-template-columns: 1fr; } }
+
+.headshot {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center;
+  border-radius: 3px; border: 1px solid var(--line); display: block;
+}
 
 /* research cards */
 .research__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
@@ -235,18 +240,24 @@ section + section { border-top: 1px solid var(--line); }
 .timeline .what { font-weight: 600; margin: 0.15rem 0 0.1rem; }
 .timeline .where { font-size: 0.92rem; color: var(--ink-soft); }
 
+/* =========================== ACTIVITIES ================================= */
+.activities__grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem;
+}
+.photo-card {
+  margin: 0; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 3px; overflow: hidden;
+}
+.photo-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.photo-card figcaption {
+  padding: 0.5rem 0.8rem; font-size: 0.88rem; color: var(--ink-soft);
+}
+
 /* =========================== CONTACT ==================================== */
-.contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); }
-@media (max-width: 760px) { .contact__grid { grid-template-columns: 1fr; } }
 .contact a { font-weight: 500; }
-.contact dl { display: grid; grid-template-columns: auto 1fr; gap: 0.55rem 1.1rem; margin: 0; }
+.contact dl { display: grid; grid-template-columns: auto 1fr; gap: 0.55rem 1.1rem; margin: 0; max-width: 36rem; }
 .contact dt { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); padding-top: 0.15rem; }
 .contact dd { margin: 0; }
-.refs { list-style: none; margin: 0; padding: 0; }
-.refs li { padding: 0.7rem 0; border-top: 1px solid var(--line-soft); font-size: 0.93rem; }
-.refs li:first-child { border-top: 0; }
-.refs .rname { font-weight: 600; }
-.refs .rrole { color: var(--ink-soft); }
 
 /* =========================== FOOTER ===================================== */
 .footer { border-top: 1px solid var(--line); padding: 2rem 0; }
